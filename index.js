@@ -40,6 +40,7 @@ const ScrollableTabView = createReactClass({
     page: PropTypes.number,
     onChangeTab: PropTypes.func,
     onScroll: PropTypes.func,
+    onOriginalScroll: PropTypes.func,
     renderTabBar: PropTypes.any,
     tabBarUnderlineStyle: ViewPropTypes.style,
     tabBarBackgroundColor: PropTypes.string,
@@ -334,6 +335,7 @@ const ScrollableTabView = createReactClass({
       const { position, offset, } = e.nativeEvent;
       this.props.onScroll(position + offset);
     }
+    this.props.onOriginalScroll&&this.props.onOriginalScroll(e);
   },
 
   _handleLayout(e) {
